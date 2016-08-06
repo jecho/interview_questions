@@ -7,11 +7,27 @@ import java.util.PriorityQueue;
 
 /*
     Merge K Sorted Lists
-    draft
+    Approach is to use a Heap/PriorityQueue (pq);
+    Since we know the arrays are sorted, we first add the first element in each array, and then poll
+    and add the result to the set, afterwards we add the next element into the pq from the array we have pulled
+    from until, doing this approach until pq is exhausted;
+    A node class is created to hold the the value, array index it came from, and the current place the value represents
  */
 
 public class MergeKSortedLists {
 
+
+    public static class Node {
+        public int index;
+        public int data;
+        public int place;
+
+        public Node(int data, int index, int place) {
+            this.data = data;
+            this.index = index;
+            this.place = place;
+        }
+    }
 
     public static void main(String[] args) {
         ArrayList<int[]> list = new ArrayList<>();
@@ -28,24 +44,25 @@ public class MergeKSortedLists {
 
     public static ArrayList<Integer> merge(ArrayList<int[]> arr) {
 
-        PriorityQueue<Integer> pq = new PriorityQueue<>(new Comparator<Integer>() {
+        PriorityQueue<Node> pq = new PriorityQueue<>(new Comparator<Node>() {
             @Override
-            public int compare(Integer n1, Integer n2) {
-                return n1 - n2;
+            public int compare(Node n1, Node n2) {
+                return n1.data - n2.data;
             }
         });
 
         for (int i = 0; i < arr.size(); i++) {
-            for (int[] a : arr) {
-                if (i < a.length) {
-                    pq.add(a[i]);
-                }
-            }
+            pq.add(new Node(arr.get(i)[0], i, 0));
         }
 
         ArrayList<Integer> results = new ArrayList<>();
-        while (!pq.isEmpty()) {
-            results.add(pq.poll());
+        while(!pq.isEmpty()) {
+            Node tmp = pq.poll();
+            results.add(tmp.data);
+            ++tmp.place;
+            if (tmp.place < arr.get(tmp.index).length) {
+                pq.add(new Node(arr.get(tmp.index)[tmp.place], tmp.index, tmp.place));
+            }
         }
 
         return results;
