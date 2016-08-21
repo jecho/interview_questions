@@ -15,27 +15,27 @@ public class HTree {
 	// build the H
 	public static void construct(int start_x, int start_y, int length, int depth) {
 
-		// base case
+	// base case
 		if (depth == 0) return;
 
 		int newLength = length/2;
 		// compute the coordinates
 		double x0 = x - newLength;
-        double x1 = x + newLength;
-        double y0 = y - newLength;
-        double y1 = y + newLength;
+		double x1 = x + newLength;
+		double y0 = y - newLength;
+		double y1 = y + newLength;
 
 		// build waist, upper left and right, and lower left and right
 		drawLine(x0, y0, x1, y1);
 		drawLine(x0, y0, x0, y1);
-        drawLine(x1, y0, x1, y1);
-        drawLine(x0, y, x1,  y);
+		drawLine(x1, y0, x1, y1);
+		drawLine(x0, y, x1,  y);
 
 
-        construct(x0, y0, newLength, depth-1);  // lower left
-        construct(x0, y1, newLength, depth-1);	// upper left
-        construct(x1, y1, newLength, depth-1);	// upper right
-        construct(x1, y0, newLength, depth-1);	// lower right
+		construct(x0, y0, newLength, depth-1);  // lower left
+		construct(x0, y1, newLength, depth-1);	// upper left
+		construct(x1, y1, newLength, depth-1);	// upper right
+		construct(x1, y0, newLength, depth-1);	// lower right
 
 	}
 }
