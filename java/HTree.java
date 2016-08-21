@@ -14,8 +14,8 @@ public class HTree {
 
 	// build the H
 	public static void construct(int start_x, int start_y, int length, int depth) {
-
-	// base case
+		
+		// base case
 		if (depth == 0) return;
 
 		int newLength = length/2;
