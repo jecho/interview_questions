@@ -7,10 +7,10 @@ import java.util.Map;
  *  Date 08/20/2016
  *  @author Jecho Ricafrente
  *
- *      flattening a dictionary (hashMap objects) in java, recursively
+ *  flattening a dictionary (hashMap objects) in java, recursively
  *
  *  Time complexity is O(n)
- *  Space complexity is O(n)    // since this example does not do in place
+ *  Space complexity is O(n)    // since this example does not do in 
  */
 public class FlattenDictionary {
 
