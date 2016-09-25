@@ -66,8 +66,10 @@ public class ClosestsStars {
         }
 
         while (limit < s.length) {
-            pq.remove();
-            pq.add(s[limit]);
+            if (s[limit].distance <= pq.peek().distance) {
+                pq.remove();
+                pq.add(s[limit]);
+            }
             limit++;
         }
 
