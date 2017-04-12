@@ -1,4 +1,4 @@
- 
+//
 // 	Date 05/09/2016
 // 	@author Jecho Ricafrente
 // 
@@ -6,6 +6,8 @@
 // 
 // 	Time complexity is O(n)
 //	Space complexity is O(1)
+//
+package main
 
 func reverseInt(x int) int {
 	sign := false
